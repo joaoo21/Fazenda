@@ -4,35 +4,15 @@
  * and open the template in the editor.
  */
 package tela.manutencao;
-import tela.listagem.ListagemTouro;
-import javax.swing.JFrame;
+
 /**
  *
- * @author T-Gamer
+ * @author Administrador
  */
 public class ManutencaoTouro extends javax.swing.JDialog {
-    public ListagemTouro listagem;
-    
-     //Entrando na Manutenção de Produto para Adicionar um novo Produto (OBS: o nome do método deverá ser o mesmo nome da classe)
- public ManutencaoTouro(java.awt.Frame parent, boolean modal, ListagemTouro listagem) {
-        super(parent, modal);
-        initComponents();
-        this.listagem = listagem;
-        
-        jtfCodigo.setEnabled(false);  //desabilitando a edição do campo código
-        btnAlterar.setEnabled(false); //desabilitando o botão alterar
-        btnExcluir.setEnabled(false); //desabilitando o botão excluir
-  }
- public ManutencaoTouro(java.awt.Frame parent, boolean modal, ListagemTouro listagem, int pk) {
-        super(parent, modal);
-        initComponents();
-        
-        jtfCodigo.setEnabled(false);  //desabilitando a edição do campo código
-        this.listagem = listagem;
-        controlador.ControladorTouro.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
-    }
+
     /**
-     * Creates new form ManutencaoTouro
+     * Creates new form ManutencaoVaca
      */
     public ManutencaoTouro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -160,15 +140,15 @@ public class ManutencaoTouro extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-controlador.ControladorTouro.inserir(this);        // TODO add your handling code here:
+      // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
- controlador.ControladorTouro.alterar(this);         // TODO add your handling code here:
+      // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-controlador.ControladorTouro.excluir(this);          // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
