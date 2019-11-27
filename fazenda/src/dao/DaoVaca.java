@@ -12,6 +12,7 @@ import modelo.Vaca;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import dao.DaoRaca;
 /**
  *
  * @author T-Gamer
@@ -26,8 +27,8 @@ public class DaoVaca {
             ps.setInt(3, objeto.getOrigem());
             ps.setDate(4, Date.valueOf(objeto.getNascimento()));
             ps.setString(5, objeto.getObs());
-            ps.setInt(6, objeto.getCod_raca());
-            ps.setInt(7, objeto.getBrinco_mae());
+            ps.setInt(6, objeto.getCod_raca().getCodigo());
+            ps.setInt(7, objeto.getBrinco_mae().getBrinco());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -41,12 +42,12 @@ public class DaoVaca {
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             
-            ps.setInt(1, objeto.getBrinco_mae());            
+            ps.setInt(7, objeto.getBrinco_mae().getBrinco());           
             ps.setInt(2, objeto.getSituacao());
             ps.setInt(3, objeto.getOrigem());
             ps.setDate(4, Date.valueOf(objeto.getNascimento()));
             ps.setString(5, objeto.getObs());
-            ps.setInt(6, objeto.getCod_raca());
+            ps.setInt(6, objeto.getCod_raca().getCodigo());
             ps.setInt(7, objeto.getBrinco());
             ps.executeUpdate();
             return true;
@@ -85,8 +86,8 @@ public class DaoVaca {
                 objeto.setOrigem(rs.getInt("origem"));
                 objeto.setNascimento(rs.getDate("nascimento").toLocalDate());
                 objeto.setObs(rs.getString("obs"));
-                objeto.setCod_raca(rs.getInt("cod_raca"));
-                objeto.setBrinco_mae(rs.getInt("brinco_mae"));
+                objeto.setCod_raca(DaoRaca.consultar(rs.getInt("cod_raca"))); //tem que importar DaoTipoProduto
+                objeto.setBrinco_mae(DaoVaca.consultar(rs.getInt("brinco_mae"))); //tem que importar DaoTipoProduto
                 
                 resultados.add(objeto);//não mexa nesse, ele adiciona o objeto na lista
             }
@@ -113,8 +114,8 @@ public class DaoVaca {
                 objeto.setOrigem(rs.getInt("origem"));
                 objeto.setNascimento(rs.getDate("nascimento").toLocalDate());
                 objeto.setObs(rs.getString("obs"));
-                objeto.setCod_raca(rs.getInt("cod_raca"));
-                objeto.setBrinco_mae(rs.getInt("brinco_mae"));
+                objeto.setCod_raca(DaoRaca.consultar(rs.getInt("cod_raca"))); //tem que importar DaoTipoProduto
+                objeto.setBrinco_mae(DaoVaca.consultar(rs.getInt("brinco_mae")));
                 return objeto;//não mexa nesse, ele adiciona o objeto na lista
             }
         } catch (SQLException | ClassNotFoundException ex) {

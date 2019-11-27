@@ -5,15 +5,17 @@
  */
 package modelo;
 
+import java.time.LocalDate;
+
 /**
  *
- * @author T-Gamer
+ * @author Administrador
  */
-public class Touro {
+public class Manejo {
     
     private Integer codigo;
-    private String nome;
-    private Raca cod_raca;
+    private LocalDate data;
+    private String obs;
 
     public Integer getCodigo() {
         return codigo;
@@ -23,25 +25,25 @@ public class Touro {
         this.codigo = codigo;
     }
 
-    public String getNome() {
-        return nome;
+    public LocalDate getData() {
+        return data;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
-    public Raca getCod_raca() {
-        return cod_raca;
+    public String getObs() {
+        return obs;
     }
 
-    public void setCod_raca(Raca cod_raca) {
-        this.cod_raca = cod_raca;
+    public void setObs(String obs) {
+        this.obs = obs;
     }
 
     @Override
     public String toString() {
-        return "Touro{" + "nome=" + nome + '}';
+        return "Manejo{" + "codigo=" + codigo + '}';
     }
     
     

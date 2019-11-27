@@ -20,8 +20,8 @@ public class Vaca {
     private Integer origem;
     private LocalDate nascimento;
     private String obs;
-    private Integer cod_raca;
-    private Integer brinco_mae;
+    private Raca cod_raca;
+    private Vaca brinco_mae;
 
     public Integer getBrinco() {
         return brinco;
@@ -63,26 +63,27 @@ public class Vaca {
         this.obs = obs;
     }
 
-    public Integer getCod_raca() {
+    public Raca getCod_raca() {
         return cod_raca;
     }
 
-    public void setCod_raca(Integer cod_raca) {
+    public void setCod_raca(Raca cod_raca) {
         this.cod_raca = cod_raca;
     }
 
-    public Integer getBrinco_mae() {
+    public Vaca getBrinco_mae() {
         return brinco_mae;
     }
 
-    public void setBrinco_mae(Integer brinco_mae) {
+    public void setBrinco_mae(Vaca brinco_mae) {
         this.brinco_mae = brinco_mae;
     }
 
+    
+    
     @Override
     public String toString() {
         return "Vaca{" + "brinco=" + brinco + '}';
     }
-    
     
 }
