@@ -5,16 +5,17 @@
  */
 package modelo;
 
+import java.util.Objects;
+
 /**
  *
- * @author Administrador
+ * @author Avell
  */
 public class Pessoa {
-    
     private Integer codigo;
-    private String usuario;
-    private String senha;
     private String email;
+    private String senha;
+    private String usuario;
     private String nome;
 
     public Integer getCodigo() {
@@ -25,12 +26,12 @@ public class Pessoa {
         this.codigo = codigo;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
@@ -41,12 +42,12 @@ public class Pessoa {
         this.senha = senha;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getNome() {
@@ -59,7 +60,32 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "codigo=" + codigo + '}';
+        return nome;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.codigo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pessoa other = (Pessoa) obj;
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        return true;
     }
     
     

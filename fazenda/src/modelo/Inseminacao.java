@@ -9,17 +9,15 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Administrador
+ * @author Avell
  */
 public class Inseminacao {
-    
     private Integer codigo;
-    private LocalDate data_inseminacao;
-    private String obs;
-    private LocalDate data_parto;
+    private LocalDate data;
+    private String observacao;
     private Integer situacao;
-    private Touro cod_touro;
-    private Raca cod_raca;
+    private Vaca vaca;
+    private Touro touro;
 
     public Integer getCodigo() {
         return codigo;
@@ -29,28 +27,20 @@ public class Inseminacao {
         this.codigo = codigo;
     }
 
-    public LocalDate getData_inseminacao() {
-        return data_inseminacao;
+    public LocalDate getData() {
+        return data;
     }
 
-    public void setData_inseminacao(LocalDate data_inseminacao) {
-        this.data_inseminacao = data_inseminacao;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
-    public String getObs() {
-        return obs;
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setObs(String obs) {
-        this.obs = obs;
-    }
-
-    public LocalDate getData_parto() {
-        return data_parto;
-    }
-
-    public void setData_parto(LocalDate data_parto) {
-        this.data_parto = data_parto;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
     public Integer getSituacao() {
@@ -61,27 +51,29 @@ public class Inseminacao {
         this.situacao = situacao;
     }
 
-    public Touro getCod_touro() {
-        return cod_touro;
+    public Vaca getVaca() {
+        return vaca;
     }
 
-    public void setCod_touro(Touro cod_touro) {
-        this.cod_touro = cod_touro;
+    public void setVaca(Vaca vaca) {
+        this.vaca = vaca;
     }
 
-    public Raca getCod_raca() {
-        return cod_raca;
+    public Touro getTouro() {
+        return touro;
     }
 
-    public void setCod_raca(Raca cod_raca) {
-        this.cod_raca = cod_raca;
+    public void setTouro(Touro touro) {
+        this.touro = touro;
     }
+
+
+
 
     @Override
     public String toString() {
-        return "Inseminacao{" + "codigo=" + codigo + '}';
+        return "Inseminacao{" + "data=" + data + ", vaca=" + vaca + '}';
     }
-    
     
     
 }

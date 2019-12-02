@@ -6,19 +6,20 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
- * @author Administrador
+ * @author Avell
  */
 public class Producao {
-    private Integer codigo;
-    private Integer turno;
-    private Double total;
-    private LocalDate data;
-    private String obs;
-    private Pessoa cod_pessoa;
-    private Vaca cod_vaca;
+private Integer codigo;
+private Integer turno;
+private LocalDate data;
+private Integer total;
+private Pessoa pessoaVaca;
+private Vaca VacaProducao;
+private String observacao;
 
     public Integer getCodigo() {
         return codigo;
@@ -36,14 +37,6 @@ public class Producao {
         this.turno = turno;
     }
 
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
-    }
-
     public LocalDate getData() {
         return data;
     }
@@ -52,35 +45,68 @@ public class Producao {
         this.data = data;
     }
 
-    public String getObs() {
-        return obs;
+    public Integer getTotal() {
+        return total;
     }
 
-    public void setObs(String obs) {
-        this.obs = obs;
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 
-    public Pessoa getCod_pessoa() {
-        return cod_pessoa;
+    public Pessoa getPessoaVaca() {
+        return pessoaVaca;
     }
 
-    public void setCod_pessoa(Pessoa cod_pessoa) {
-        this.cod_pessoa = cod_pessoa;
+    public void setPessoaVaca(Pessoa pessoaVaca) {
+        this.pessoaVaca = pessoaVaca;
     }
 
-    public Vaca getCod_vaca() {
-        return cod_vaca;
+    public Vaca getVacaProducao() {
+        return VacaProducao;
     }
 
-    public void setCod_vaca(Vaca cod_vaca) {
-        this.cod_vaca = cod_vaca;
+    public void setVacaProducao(Vaca VacaProducao) {
+        this.VacaProducao = VacaProducao;
+    }
+
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.codigo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producao other = (Producao) obj;
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Producao{" + "codigo=" + codigo + '}';
+        return "Producao{" + "turno=" + turno + ", data=" + data + ", VacaProducao=" + VacaProducao + '}';
     }
-    
-    
+
+
 }
-    

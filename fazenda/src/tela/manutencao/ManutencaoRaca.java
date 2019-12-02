@@ -4,21 +4,38 @@
  * and open the template in the editor.
  */
 package tela.manutencao;
-
+import tela.listagem.ListagemRaca;
 /**
  *
- * @author Administrador
+ * @author Avell
  */
 public class ManutencaoRaca extends javax.swing.JDialog {
-
+public ListagemRaca listagem;
     /**
-     * Creates new form ManutencaoVaca
+     * Creates new form ManutencaoRaca
      */
     public ManutencaoRaca(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
+ public ManutencaoRaca(java.awt.Frame parent, boolean modal, ListagemRaca listagem) {
+        super(parent, modal);
+        initComponents();
+        this.listagem = listagem;
+        
+        jtfCodigo.setEnabled(false);  //desabilitando a edição do campo código
+        btnAlterar.setEnabled(false); //desabilitando o botão alterar
+        btnExcluir.setEnabled(false); //desabilitando o botão excluir
+  }
+   public ManutencaoRaca(java.awt.Frame parent, boolean modal, ListagemRaca listagem, int pk) {
+        super(parent, modal);
+        initComponents();
+        
+        jtfCodigo.setEnabled(false);  //desabilitando a edição do campo código
+        this.listagem = listagem;
+        controlador.ControladorRaca.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,24 +45,32 @@ public class ManutencaoRaca extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnAdicionar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jtfNome = new javax.swing.JTextField();
-        jtfCodigo = new javax.swing.JTextField();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        btnAdicionar = new javax.swing.JButton();
+        jtfCodigo = new javax.swing.JTextField();
+        jtfNome = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Manutenção Raça");
+        jLabel1.setText("Código:");
 
         jLabel2.setText("Nome:");
 
-        jLabel3.setText("Código:");
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel3.setText("Manutenção de raças");
 
         btnAlterar.setText("Alterar");
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -62,11 +87,15 @@ public class ManutencaoRaca extends javax.swing.JDialog {
         });
 
         jButton4.setText("Cancelar");
-
-        btnAdicionar.setText("Adicionar");
-        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarActionPerformed(evt);
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jtfNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfNomeActionPerformed(evt);
             }
         });
 
@@ -75,66 +104,73 @@ public class ManutencaoRaca extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(86, 86, 86))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnAdicionar)
                         .addGap(18, 18, 18)
                         .addComponent(btnAlterar)
                         .addGap(18, 18, 18)
                         .addComponent(btnExcluir)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .addComponent(jButton4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel3)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                    .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionar)
                     .addComponent(btnAlterar)
                     .addComponent(btnExcluir)
                     .addComponent(jButton4))
-                .addGap(127, 127, 127))
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+controlador.ControladorRaca.excluir(this);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-          // TODO add your handling code here:
+controlador.ControladorRaca.inserir(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-           // TODO add your handling code here:
-    }//GEN-LAST:event_btnAlterarActionPerformed
-
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+    private void jtfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluirActionPerformed
+    }//GEN-LAST:event_jtfNomeActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+controlador.ControladorRaca.alterar(this);         // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,6 +218,7 @@ public class ManutencaoRaca extends javax.swing.JDialog {
     public javax.swing.JButton btnAdicionar;
     public javax.swing.JButton btnAlterar;
     public javax.swing.JButton btnExcluir;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

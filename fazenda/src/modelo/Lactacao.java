@@ -9,14 +9,14 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Administrador
+ * @author Avell
  */
 public class Lactacao {
     private Integer codigo;
     private LocalDate inicio;
     private LocalDate fim;
-    private Vaca cod_vaca;
-    private String obs;
+    private String observacao;
+    private Vaca Vaca;
 
     public Integer getCodigo() {
         return codigo;
@@ -42,26 +42,28 @@ public class Lactacao {
         this.fim = fim;
     }
 
-    public Vaca getCod_vaca() {
-        return cod_vaca;
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setCod_vaca(Vaca cod_vaca) {
-        this.cod_vaca = cod_vaca;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
-    public String getObs() {
-        return obs;
-    }
-
-    public void setObs(String obs) {
-        this.obs = obs;
-    }
 
     @Override
     public String toString() {
-        return "Lactacao{" + "codigo=" + codigo + '}';
+        return "Lactacao{" + "inicio=" + inicio + ", Vaca=" + Vaca + '}';
     }
+
+    public Vaca getVaca() {
+        return Vaca;
+    }
+
+    public void setVaca(Vaca Vaca) {
+        this.Vaca = Vaca;
+    }
+
     
     
 }

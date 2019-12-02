@@ -7,13 +7,12 @@ package modelo;
 
 /**
  *
- * @author T-Gamer
+ * @author Avell
  */
 public class Touro {
-    
     private Integer codigo;
     private String nome;
-    private Raca cod_raca;
+    private Raca raca;
 
     public Integer getCodigo() {
         return codigo;
@@ -31,17 +30,20 @@ public class Touro {
         this.nome = nome;
     }
 
-    public Raca getCod_raca() {
-        return cod_raca;
+    public Raca getRaca() {
+        return raca;
     }
 
-    public void setCod_raca(Raca cod_raca) {
-        this.cod_raca = cod_raca;
+    public void setRaca(Raca raca) {
+        this.raca = raca;
     }
+
+
+
 
     @Override
     public String toString() {
-        return "Touro{" + "nome=" + nome + '}';
+        return nome;
     }
     
     

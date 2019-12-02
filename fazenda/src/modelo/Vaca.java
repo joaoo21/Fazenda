@@ -6,37 +6,27 @@
 package modelo;
 
 import java.time.LocalDate;
-
-
+import java.util.Objects;
 
 /**
  *
- * @author T-Gamer
+ * @author Avell
  */
 public class Vaca {
-    
-    private Integer brinco;
-    private Integer situacao;
+    private Integer codigo;
     private Integer origem;
+    private Integer situacao;
     private LocalDate nascimento;
-    private String obs;
-    private Raca cod_raca;
-    private Vaca brinco_mae;
+    private String observacao;
+    private Vaca maeVaca;
+    private Raca RacaVaca;
 
-    public Integer getBrinco() {
-        return brinco;
+    public Integer getCodigo() {
+        return codigo;
     }
 
-    public void setBrinco(Integer brinco) {
-        this.brinco = brinco;
-    }
-
-    public Integer getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(Integer situacao) {
-        this.situacao = situacao;
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
     }
 
     public Integer getOrigem() {
@@ -47,6 +37,14 @@ public class Vaca {
         this.origem = origem;
     }
 
+    public Integer getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Integer situacao) {
+        this.situacao = situacao;
+    }
+
     public LocalDate getNascimento() {
         return nascimento;
     }
@@ -55,35 +53,65 @@ public class Vaca {
         this.nascimento = nascimento;
     }
 
-    public String getObs() {
-        return obs;
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setObs(String obs) {
-        this.obs = obs;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
-    public Raca getCod_raca() {
-        return cod_raca;
+    public Vaca getMaeVaca() {
+        return maeVaca;
     }
 
-    public void setCod_raca(Raca cod_raca) {
-        this.cod_raca = cod_raca;
+    public void setMaeVaca(Vaca maeVaca) {
+        this.maeVaca = maeVaca;
     }
 
-    public Vaca getBrinco_mae() {
-        return brinco_mae;
+
+
+    public Raca getRacaVaca() {
+        return RacaVaca;
     }
 
-    public void setBrinco_mae(Vaca brinco_mae) {
-        this.brinco_mae = brinco_mae;
+    public void setRacaVaca(Raca RacaVaca) {
+        this.RacaVaca = RacaVaca;
     }
 
-    
-    
+
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.codigo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Vaca other = (Vaca) obj;
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
-        return "Vaca{" + "brinco=" + brinco + '}';
+        return codigo.toString();
     }
+
+
+    
     
 }
